@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode & Counter</title>
+</head>
+<body>
+    <!-- TUGAS 1 -->
+    <button onclick="toggle()" id="btn1">Ubah Ke Mode Malam</button>
+
+    <hr>
+
+    <!-- TUGAS 2 -->
+    <h2>Counter</h2>
+    <p id="value">0</p>
+    <div class="counter">
+        <button class="btn decrease">-</button>
+        <button class="btn increase">+</button>
+        <button class="btn reset">Reset</button>
+    </div>
+
+    <script>
+        // === TUGAS 1: Mode Siang/Malam ===
+        function toggle() {
+            let tombol = document.getElementById('btn1');
+            if (document.body.style.backgroundColor === "black") {
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black";
+                tombol.innerText = "Ubah Ke Mode Malam";
+            } else {
+                document.body.style.backgroundColor = "black";
+                document.body.style.color = "white";
+                tombol.innerText = "Ubah Ke Mode Siang";
+            }
+        }
+
+        // === TUGAS 2: Counter ===
+        let count = 0;
+        const value = document.querySelector('#value');
+        const btns = document.querySelectorAll('.btn');
+
+        btns.forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                const styles = e.currentTarget.classList;
+                if (styles.contains('decrease')) {
+                    count--;
+                } else if (styles.contains('increase')) {
+                    count++;
+                } else {
+                    count = 0;
+                }
+
+                value.textContent = count;
+
+                if (count > 0) {
+                    value.style.color = "green";
+                } else if (count < 0) {
+                    value.style.color = "red";
+                } else {
+                    value.style.color = "black";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
